@@ -1,8 +1,7 @@
 package hello.jdbc.service;
 
 import hello.jdbc.member.Member;
-import hello.jdbc.repository.MemberRepositoryV3;
-import hello.jdbc.repository.MemberRepositoryV4_1;
+import hello.jdbc.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
@@ -33,7 +32,7 @@ class MemberServiceV4Test {
   public static final String MEMBER_EX = "ex";
 
   @Autowired
-  private MemberRepositoryV4_1 memberRepository;
+  private MemberRepository memberRepository;
   @Autowired
   private MemberServiceV4 memberService;
 
@@ -44,8 +43,8 @@ class MemberServiceV4Test {
     private final DataSource dataSource;
 
     @Bean
-    MemberRepositoryV4_1 memberRepository() {
-      return new MemberRepositoryV4_1(dataSource);
+    MemberRepository memberRepository() {
+      return new MemberRepositoryV5(dataSource);
     }
 
     @Bean
